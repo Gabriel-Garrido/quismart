@@ -4,6 +4,7 @@ import Navbar from "components/navigation/Navbar";
 import Layout from "hocs/layouts/Layout";
 import logo from "../../assets/img/Logo_Quismart.png";
 import AdvantageCard from "components/home/AdvantageCard";
+import { Typewriter } from "react-simple-typewriter";
 
 function Home() {
   return (
@@ -11,13 +12,22 @@ function Home() {
       <Navbar />
       <div className="bg-dark-bg text-light-text min-h-screen mt-8">
         <div className="container mx-auto py-16 px-4 text-center">
-          <img src={logo} alt="Logo Quismart" className="mx-auto mb-8 h-24 w-24 md:h-32 md:w-32" />
-          <h1 className="text-4xl font-bold text-primary-blue mb-12">
-            Bienvenido a Quismart
+          <img src={logo} alt="Logo Quismart" className="mx-auto mb-4 h-24 w-24 md:h-32 md:w-32" />
+          <h1 className="text-5xl font-bold text-primary-blue mb-2">
+            Quismart </h1>
+            <h1 className="text-4xl font-bold text-primary-blue mb-12">
+            <Typewriter
+            words={['Transforma tu ECOE', 'Maximiza la Eficiencia', 'Garantiza la Precisión', 'Facilita la Gestión']}
+            loop={0}
+            cursor
+            cursorStyle='_'
+            typeSpeed={30}
+            deleteSpeed={30}
+            delaySpeed={1400}
+          />
+
           </h1>
-          <p className="text-lg text-secondary-text mb-12">
-            La solución digital para la evaluación clínica objetiva estructurada (ECOE).
-          </p>
+         
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             <FeatureCard
               title="Estadísticas"
