@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to='/' className="flex items-center space-x-3">
           <img src={logo} className="h-8 md:h-12" alt="Logo Quismart" />
-          <span className="hidden md:inline self-center text-2xl font-semibold text-light-text">
+          <span className="hidden md:inline self-center text-2xl font-semibold text-primary-blue">
             Quismart
           </span>
         </Link>
