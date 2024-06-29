@@ -2,14 +2,14 @@ import Footer from "components/navigation/Footer";
 import Navbar from "components/navigation/Navbar";
 import Layout from "hocs/layouts/Layout";
 
-function Home() {
+function Students() {
   return (
     <Layout>
       <Navbar />
       <div className="bg-dark-bg text-light-text min-h-screen flex items-center justify-center">
-      <div className="bg-dark-secondary p-8 rounded-lg shadow-lg">
+        <div className="bg-dark-secondary p-8 rounded-lg shadow-lg">
           <h1 className="text-3xl font-bold text-primary-blue mb-4">
-           ---------- Home ----------
+           ---------- Estudiantes ----------
           </h1>
           <p className="text-secondary-text mb-4">
              ****Texto del componente*****
@@ -19,10 +19,9 @@ function Home() {
           </button>
         </div>
       </div>
-      
       <Footer />
     </Layout>
   );
 }
 
-export default Home;
+export default Students;
