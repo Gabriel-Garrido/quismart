@@ -10,18 +10,19 @@ class EvaluadorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Evaluador
         fields = ['id', 'nombre', 'apellido', 'especialidad', 'email']
-
-class EstacionSerializer(serializers.ModelSerializer):
-    evaluador = EvaluadorSerializer(read_only=True)
-
-    class Meta:
-        model = Estacion
-        fields = ['id', 'nombre', 'descripcion', 'evaluador']
-
+        
 class PreguntaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pregunta
         fields = ['id', 'texto', 'estacion']
+
+class EstacionSerializer(serializers.ModelSerializer):
+    evaluador = EvaluadorSerializer(read_only=True)
+    preguntas = PreguntaSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Estacion
+        fields = ['id', 'nombre', 'descripcion', 'evaluador', 'preguntas']
 
 class EvaluacionEstacionSerializer(serializers.ModelSerializer):
     estacion = EstacionSerializer(read_only=True)

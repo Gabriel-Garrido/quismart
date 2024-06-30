@@ -90,6 +90,86 @@
         }
     },
     {
+        "model": "ecoe.pregunta",
+        "pk": 1,
+        "fields": {
+            "texto": "Describa los pasos para realizar una historia clínica completa.",
+            "estacion": 1
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 2,
+        "fields": {
+            "texto": "Explique el proceso para elaborar un plan de manejo adecuado para un paciente con diabetes.",
+            "estacion": 2
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 3,
+        "fields": {
+            "texto": "Realice un examen físico general y describa los hallazgos normales y anormales.",
+            "estacion": 3
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 4,
+        "fields": {
+            "texto": "Identifique los diagnósticos diferenciales para un paciente con dolor torácico.",
+            "estacion": 4
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 5,
+        "fields": {
+            "texto": "Describa los pasos para realizar una técnica de asepsia adecuada antes de un procedimiento.",
+            "estacion": 5
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 6,
+        "fields": {
+            "texto": "Explique cómo se debe realizar una evaluación de signos vitales.",
+            "estacion": 3
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 7,
+        "fields": {
+            "texto": "Describa cómo debe ser la comunicación efectiva con un paciente pediátrico y sus padres.",
+            "estacion": 2
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 8,
+        "fields": {
+            "texto": "Identifique los principales signos y síntomas de una infección urinaria.",
+            "estacion": 4
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 9,
+        "fields": {
+            "texto": "Explique el manejo inicial de un paciente con sospecha de fractura ósea.",
+            "estacion": 5
+        }
+    },
+    {
+        "model": "ecoe.pregunta",
+        "pk": 10,
+        "fields": {
+            "texto": "Describa los criterios diagnósticos para hipertensión arterial.",
+            "estacion": 1
+        }
+    },
+    {
         "model": "ecoe.evaluador",
         "pk": 5,
         "fields": {
