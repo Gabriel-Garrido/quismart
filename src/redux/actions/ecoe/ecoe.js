@@ -32,3 +32,32 @@ export const get_students = () => async dispatch => {
         })
     }
 }
+
+export const get_studentDetail = (studentId) => async dispatch => {
+    
+    const config = {
+        headers: {
+            'Accept': 'application/json'
+        }
+    }
+    try{
+
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/ecoe/students/${studentId}`, config)
+
+        if(res.status === 200) {
+            dispatch({
+                type: GET_ESTUDIANTES_SUCCESS,
+                payload: res.data
+            })
+        }else{
+            dispatch({
+                type: GET_ESTUDIANTES_FAIL
+            })
+        }
+
+    }catch(err){
+        dispatch({
+            type: GET_ESTUDIANTES_FAIL
+        })
+    }
+}

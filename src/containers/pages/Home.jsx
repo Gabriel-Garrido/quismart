@@ -35,18 +35,18 @@ function Home() {
               link="/plots"
             />
             <FeatureCard
-              title="Questions"
-              description="Gestiona y responde questions de manera eficiente."
+              title="Preguntas"
+              description="Gestiona y responde preguntas de manera eficiente."
               link="/questions"
             />
             <FeatureCard
-              title="Stations"
-              description="Monitorea y gestiona las stations de manera efectiva."
+              title="Estaciones"
+              description="Monitorea y gestiona las estaciones de manera efectiva."
               link="/stations"
             />
             <FeatureCard
-              title="Students"
-              description="Administra y apoya a los students con facilidad."
+              title="Estudiantes"
+              description="Administra y apoya a los estudiantes con facilidad."
               link="/students"
             />
           </div>
@@ -55,11 +55,11 @@ function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <AdvantageCard
                 title="Eficiencia"
-                description="Reduce el tiempo y los recursos necesarios para la evaluation."
+                description="Reduce el tiempo y los recursos necesarios para la evaluación."
               />
               <AdvantageCard
                 title="Precisión"
-                description="Mejora la precisión y consistencia en la evaluation de los students."
+                description="Mejora la precisión y consistencia en la evaluación de los estudiantes."
               />
               <AdvantageCard
                 title="Accesibilidad"

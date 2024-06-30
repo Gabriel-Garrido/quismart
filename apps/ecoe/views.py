@@ -2,7 +2,10 @@
 
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
+from django.core.management import call_command
+from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
 from .models import Student, Evaluator, Station, Question, Evaluation, EvaluationStation, Score
 from .serializers import (
     StudentSerializer,
@@ -13,9 +16,6 @@ from .serializers import (
     EvaluationStationSerializer,
     ScoreSerializer
 )
-from django.shortcuts import render
-from rest_framework.decorators import api_view
-from django.core.management import call_command
 
 @api_view(['GET'])
 def cargar_datos_prueba(request):
@@ -101,3 +101,12 @@ class ScoreViewSet(viewsets.ModelViewSet):
             return Response({"detail": "Score for this combination already exists."}, status=status.HTTP_400_BAD_REQUEST)
 
         return super().create(request, *args, **kwargs)
+
+class StudentDetailView(APIView):
+    """
+    API endpoint that allows a single student to be retrieved.
+    """
+    def get(self, request, studentId, format=None):
+        student = get_object_or_404(Student, id=studentId)
+        serializer = StudentSerializer(student)
+        return Response(serializer.data)

@@ -10,6 +10,7 @@ from .views import (
     EvaluationViewSet,
     EvaluationStationViewSet,
     ScoreViewSet,
+    StudentDetailView,
     cargar_datos_prueba  # Importa la nueva vista
 )
 
@@ -24,5 +25,6 @@ router.register(r'scores', ScoreViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('cargar-datos-prueba/', cargar_datos_prueba),  # Nueva URL para cargar datos de prueba en 'http://127.0.0.1:8000/api/ecoe/cargar-datos-prueba/'
+    path('students/<int:studentId>/', StudentDetailView.as_view(), name='student-detail'),  # URL corregida
+    path('cargar-datos-prueba/', cargar_datos_prueba, name='cargar-datos-prueba'),  # Nueva URL
 ]
