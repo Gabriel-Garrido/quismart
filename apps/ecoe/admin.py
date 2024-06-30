@@ -1,51 +1,51 @@
 from django.contrib import admin
-from .models import Estudiante, Evaluador, Estacion, Pregunta, Evaluacion, EvaluacionEstacion, Puntaje
+from .models import Student, Evaluator, Station, Question, Evaluation, EvaluationStation, Score
 
-@admin.register(Estudiante)
-class EstudianteAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'apellido', 'matricula', 'email')
-    search_fields = ('nombre', 'apellido', 'matricula', 'email')
-    list_filter = ('apellido',)
-    ordering = ('apellido', 'nombre')
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'last_name', 'registration_number', 'email')
+    search_fields = ('name', 'last_name', 'registration_number', 'email')
+    list_filter = ('last_name',)
+    ordering = ('last_name', 'name')
 
-@admin.register(Evaluador)
-class EvaluadorAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'apellido', 'especialidad', 'email')
-    search_fields = ('nombre', 'apellido', 'especialidad', 'email')
-    list_filter = ('especialidad',)
-    ordering = ('apellido', 'nombre')
+@admin.register(Evaluator)
+class EvaluatorAdmin(admin.ModelAdmin):
+    list_display = ('name', 'last_name', 'specialty', 'email')
+    search_fields = ('name', 'last_name', 'specialty', 'email')
+    list_filter = ('specialty',)
+    ordering = ('last_name', 'name')
 
-@admin.register(Estacion)
-class EstacionAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'descripcion', 'evaluador')
-    search_fields = ('nombre', 'descripcion')
-    list_filter = ('evaluador',)
-    ordering = ('nombre',)
+@admin.register(Station)
+class StationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'description', 'evaluator')
+    search_fields = ('name', 'description')
+    list_filter = ('evaluator',)
+    ordering = ('name',)
 
-@admin.register(Pregunta)
-class PreguntaAdmin(admin.ModelAdmin):
-    list_display = ('texto', 'estacion')
-    search_fields = ('texto',)
-    list_filter = ('estacion',)
-    ordering = ('estacion', 'id')
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('text', 'station')
+    search_fields = ('text',)
+    list_filter = ('station',)
+    ordering = ('station', 'id')
 
-@admin.register(Evaluacion)
-class EvaluacionAdmin(admin.ModelAdmin):
-    list_display = ('fecha', 'duracion', 'tipo')
-    search_fields = ('fecha', 'tipo')
-    list_filter = ('fecha', 'tipo')
-    ordering = ('fecha',)
+@admin.register(Evaluation)
+class EvaluationAdmin(admin.ModelAdmin):
+    list_display = ('date', 'duration', 'type')
+    search_fields = ('date', 'type')
+    list_filter = ('date', 'type')
+    ordering = ('date',)
 
-@admin.register(EvaluacionEstacion)
-class EvaluacionEstacionAdmin(admin.ModelAdmin):
-    list_display = ('evaluacion', 'estacion')
-    search_fields = ('evaluacion', 'estacion')
-    list_filter = ('evaluacion', 'estacion')
-    ordering = ('evaluacion', 'estacion')
+@admin.register(EvaluationStation)
+class EvaluationStationAdmin(admin.ModelAdmin):
+    list_display = ('evaluation', 'station')
+    search_fields = ('evaluation', 'station')
+    list_filter = ('evaluation', 'station')
+    ordering = ('evaluation', 'station')
 
-@admin.register(Puntaje)
-class PuntajeAdmin(admin.ModelAdmin):
-    list_display = ('estudiante', 'evaluacion', 'estacion', 'puntaje')
-    search_fields = ('estudiante__nombre', 'evaluacion__fecha', 'estacion__nombre', 'puntaje')
-    list_filter = ('estudiante', 'evaluacion', 'estacion')
-    ordering = ('estudiante', 'evaluacion', 'estacion')
+@admin.register(Score)
+class ScoreAdmin(admin.ModelAdmin):
+    list_display = ('student', 'evaluation', 'station', 'score')
+    search_fields = ('student__name', 'evaluation__date', 'station__name', 'score')
+    list_filter = ('student', 'evaluation', 'station')
+    ordering = ('student', 'evaluation', 'station')

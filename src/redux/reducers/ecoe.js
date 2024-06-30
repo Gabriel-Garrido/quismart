@@ -4,7 +4,7 @@ import {
 } from '../actions/ecoe/types'
 
 const initialState = {
-    estudiantes: null
+    students: null
 }
 
 export default function ecoe(state=initialState, action) {
@@ -14,12 +14,12 @@ export default function ecoe(state=initialState, action) {
         case GET_ESTUDIANTES_SUCCESS:
             return {
                 ...state,
-                estudiantes: payload
+                students: payload
             }
         case GET_ESTUDIANTES_FAIL:
             return {
                 ...state,
-                estudiantes: null
+                students: null
             }
         default:
             return state

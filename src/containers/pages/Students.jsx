@@ -1,18 +1,16 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { get_estudiantes } from "redux/actions/ecoe/ecoe";
+import { get_students } from "redux/actions/ecoe/ecoe";
 import Footer from "components/navigation/Footer";
 import Navbar from "components/navigation/Navbar";
 import Layout from "hocs/layouts/Layout";
 
-function Students({ get_estudiantes, estudiantes }) {
+function Students({ get_students, students }) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    get_estudiantes();
-  }, [get_estudiantes]);
-
-  console.log(estudiantes&&estudiantes);
+    get_students();
+  }, [get_students]);
 
   return (
     <Layout>
@@ -20,11 +18,11 @@ function Students({ get_estudiantes, estudiantes }) {
       <div className="bg-dark-bg text-light-text min-h-screen flex items-center justify-center">
         <div className="bg-dark-secondary p-8 rounded-lg shadow-lg">
           <h1 className="text-3xl font-bold text-primary-blue mb-4">
-            ---------- Estudiantes ----------
+            ---------- Students ----------
           </h1>
           <ul>
-            {estudiantes&&estudiantes.map((estudiante) => (
-              <li>{estudiante.nombre}</li>
+            {students&&students.map((student, index) => (
+              <li key={index}>{student.name}</li>
             ))}
             
           </ul>
@@ -40,9 +38,9 @@ function Students({ get_estudiantes, estudiantes }) {
 
 
 const mapStateToProps = state => ({
-  estudiantes: state.ecoe.estudiantes,
+  students: state.ecoe.students,
 })
 
 export default connect(mapStateToProps,{
-  get_estudiantes,
+  get_students,
 }) (Students);

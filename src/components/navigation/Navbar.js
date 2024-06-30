@@ -84,21 +84,21 @@ const Navbar = () => {
               <Link to='/questions'
                 className="block py-2 px-3 text-light-text rounded hover:bg-gray-500 md:hover:bg-transparent md:hover:text-primary-blue md:p-0"
               >
-                Preguntas
+                Questions
               </Link>
             </li>
             <li>
               <Link to='/stations'
                 className="block py-2 px-3 text-light-text rounded hover:bg-gray-500 md:hover:bg-transparent md:hover:text-primary-blue md:p-0"
               >
-                Estaciones
+                Stations
               </Link>
             </li>
             <li>
               <Link to='/students'
                 className="block py-2 px-3 text-light-text rounded hover:bg-gray-500 md:hover:bg-transparent md:hover:text-primary-blue md:p-0"
               >
-                Estudiantes
+                Students
               </Link>
             </li>
           </ul>

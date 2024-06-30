@@ -4,7 +4,7 @@ import {
     GET_ESTUDIANTES_FAIL
 } from './types'
 
-export const get_estudiantes = () => async dispatch => {
+export const get_students = () => async dispatch => {
     
     const config = {
         headers: {
@@ -13,7 +13,7 @@ export const get_estudiantes = () => async dispatch => {
     }
     try{
 
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/ecoe/estudiantes/`, config)
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/ecoe/students/`, config)
 
         if(res.status === 200) {
             dispatch({

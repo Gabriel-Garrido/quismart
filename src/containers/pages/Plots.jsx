@@ -12,7 +12,7 @@ function Plots() {
            ---------- Estadísticas ----------
           </h1>
           <p className="text-secondary-text mb-4">
-             ****Texto del componente*****
+             ****Text del componente*****
           </p>
           <button className="bg-primary-blue text-dark-bg py-2 px-4 rounded hover:bg-highlight transition duration-300">
             Click 

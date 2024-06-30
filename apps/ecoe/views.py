@@ -3,15 +3,15 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from .models import Estudiante, Evaluador, Estacion, Pregunta, Evaluacion, EvaluacionEstacion, Puntaje
+from .models import Student, Evaluator, Station, Question, Evaluation, EvaluationStation, Score
 from .serializers import (
-    EstudianteSerializer,
-    EvaluadorSerializer,
-    EstacionSerializer,
-    PreguntaSerializer,
-    EvaluacionSerializer,
-    EvaluacionEstacionSerializer,
-    PuntajeSerializer
+    StudentSerializer,
+    EvaluatorSerializer,
+    StationSerializer,
+    QuestionSerializer,
+    EvaluationSerializer,
+    EvaluationStationSerializer,
+    ScoreSerializer
 )
 from django.shortcuts import render
 from rest_framework.decorators import api_view
@@ -25,79 +25,79 @@ def cargar_datos_prueba(request):
     call_command('loaddata', 'initial_data.json')
     return Response({"detail": "Datos de prueba cargados exitosamente."})
 
-class EstudianteViewSet(viewsets.ModelViewSet):
+class StudentViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows students to be viewed or edited.
     """
-    queryset = Estudiante.objects.all()
-    serializer_class = EstudianteSerializer
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
 
 
-class EvaluadorViewSet(viewsets.ModelViewSet):
+class EvaluatorViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows evaluators to be viewed or edited.
     """
-    queryset = Evaluador.objects.all()
-    serializer_class = EvaluadorSerializer
+    queryset = Evaluator.objects.all()
+    serializer_class = EvaluatorSerializer
 
 
-class EstacionViewSet(viewsets.ModelViewSet):
+class StationViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows stations to be viewed or edited.
     """
-    queryset = Estacion.objects.all()
-    serializer_class = EstacionSerializer
+    queryset = Station.objects.all()
+    serializer_class = StationSerializer
 
 
-class PreguntaViewSet(viewsets.ModelViewSet):
+class QuestionViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows questions to be viewed or edited.
     """
-    queryset = Pregunta.objects.all()
-    serializer_class = PreguntaSerializer
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
 
 
-class EvaluacionViewSet(viewsets.ModelViewSet):
+class EvaluationViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows evaluations to be viewed or edited.
     """
-    queryset = Evaluacion.objects.all()
-    serializer_class = EvaluacionSerializer
+    queryset = Evaluation.objects.all()
+    serializer_class = EvaluationSerializer
 
     @action(detail=True, methods=['get'])
-    def estudiantes(self, request, pk=None):
+    def students(self, request, pk=None):
         """
         Custom action to retrieve all students associated with an evaluation.
         """
-        evaluacion = self.get_object()
-        estudiantes = evaluacion.estudiantes.all()
-        serializer = EstudianteSerializer(estudiantes, many=True)
+        evaluation = self.get_object()
+        students = evaluation.students.all()
+        serializer = StudentSerializer(students, many=True)
         return Response(serializer.data)
 
-class EvaluacionEstacionViewSet(viewsets.ModelViewSet):
+class EvaluationStationViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows evaluation-station relations to be viewed or edited.
     """
-    queryset = EvaluacionEstacion.objects.all()
-    serializer_class = EvaluacionEstacionSerializer
+    queryset = EvaluationStation.objects.all()
+    serializer_class = EvaluationStationSerializer
 
 
-class PuntajeViewSet(viewsets.ModelViewSet):
+class ScoreViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows scores to be viewed or edited.
     """
-    queryset = Puntaje.objects.all()
-    serializer_class = PuntajeSerializer
+    queryset = Score.objects.all()
+    serializer_class = ScoreSerializer
 
     def create(self, request, *args, **kwargs):
         """
-        Override create method to ensure unique constraint on (estudiante, evaluacion, estacion).
+        Override create method to ensure unique constraint on (student, evaluation, station).
         """
-        estudiante = request.data.get('estudiante')
-        evaluacion = request.data.get('evaluacion')
-        estacion = request.data.get('estacion')
+        student = request.data.get('student')
+        evaluation = request.data.get('evaluation')
+        station = request.data.get('station')
 
-        if Puntaje.objects.filter(estudiante=estudiante, evaluacion=evaluacion, estacion=estacion).exists():
-            return Response({"detail": "Puntaje for this combination already exists."}, status=status.HTTP_400_BAD_REQUEST)
+        if Score.objects.filter(student=student, evaluation=evaluation, station=station).exists():
+            return Response({"detail": "Score for this combination already exists."}, status=status.HTTP_400_BAD_REQUEST)
 
         return super().create(request, *args, **kwargs)

@@ -1,125 +1,125 @@
 from django.db import models
 
-class Estudiante(models.Model):
+class Student(models.Model):
     """
-    Modelo para almacenar información de los estudiantes.
+    Modelo para almacenar información de los students.
     """
-    nombre = models.CharField(max_length=100, verbose_name="Nombre")
-    apellido = models.CharField(max_length=100, verbose_name="Apellido")
-    matricula = models.CharField(max_length=20, unique=True, verbose_name="Matrícula")
-    email = models.EmailField(max_length=50, null=False, blank=False, verbose_name="Rol")
+    name = models.CharField(max_length=100, verbose_name="Name")
+    last_name = models.CharField(max_length=100, verbose_name="last_name")
+    registration_number = models.CharField(max_length=20, unique=True, verbose_name="Registration_number")
+    email = models.EmailField(max_length=50, null=False, blank=False, verbose_name="Email")
 
     class Meta:
-        verbose_name = "Estudiante"
-        verbose_name_plural = "Estudiantes"
-        ordering = ['apellido', 'nombre']
+        verbose_name = "Student"
+        verbose_name_plural = "Students"
+        ordering = ['last_name', 'name']
 
     def __str__(self):
-        return f'{self.nombre} {self.apellido}'
+        return f'{self.name} {self.last_name}'
 
 
-class Evaluador(models.Model):
+class Evaluator(models.Model):
     """
-    Modelo para almacenar información de los evaluadores.
+    Modelo para almacenar información de los evaluators.
     """
-    nombre = models.CharField(max_length=100, verbose_name="Nombre")
-    apellido = models.CharField(max_length=100, verbose_name="Apellido")
-    especialidad = models.CharField(max_length=100, verbose_name="Especialidad")
-    email = models.EmailField(max_length=50, null=False, blank=False, verbose_name="Rol")
+    name = models.CharField(max_length=100, verbose_name="Name")
+    last_name = models.CharField(max_length=100, verbose_name="last_name")
+    specialty = models.CharField(max_length=100, verbose_name="Specialty")
+    email = models.EmailField(max_length=50, null=False, blank=False, verbose_name="Email")
 
     class Meta:
-        verbose_name = "Evaluador"
-        verbose_name_plural = "Evaluadores"
-        ordering = ['apellido', 'nombre']
+        verbose_name = "Evaluator"
+        verbose_name_plural = "Evaluators"
+        ordering = ['last_name', 'name']
 
     def __str__(self):
-        return f'{self.nombre} {self.apellido}'
+        return f'{self.name} {self.last_name}'
 
 
-class Estacion(models.Model):
+class Station(models.Model):
     """
-    Modelo para almacenar información de las estaciones.
+    Modelo para almacenar información de las stations.
     """
-    nombre = models.CharField(max_length=100, verbose_name="Nombre")
-    descripcion = models.TextField(verbose_name="Descripción")
-    evaluador = models.ForeignKey(Evaluador, on_delete=models.CASCADE, related_name='estaciones', verbose_name="Evaluador")
+    name = models.CharField(max_length=100, verbose_name="Name")
+    description = models.TextField(verbose_name="Description")
+    evaluator = models.ForeignKey(Evaluator, on_delete=models.CASCADE, related_name='stations', verbose_name="Evaluator")
 
     class Meta:
-        verbose_name = "Estación"
-        verbose_name_plural = "Estaciones"
-        ordering = ['nombre']
+        verbose_name = "Station"
+        verbose_name_plural = "Stations"
+        ordering = ['name']
 
     def __str__(self):
-        return self.nombre
+        return self.name
 
 
-class Pregunta(models.Model):
+class Question(models.Model):
     """
-    Modelo para almacenar información de las preguntas de cada estación.
+    Modelo para almacenar información de las questions de cada estación.
     """
-    texto = models.TextField(verbose_name="Texto de la pregunta")
-    estacion = models.ForeignKey(Estacion, related_name='preguntas', on_delete=models.CASCADE, verbose_name="Estación")
+    text = models.TextField(verbose_name="Text de la question")
+    station = models.ForeignKey(Station, related_name='questions', on_delete=models.CASCADE, verbose_name="Station")
 
     class Meta:
-        verbose_name = "Pregunta"
-        verbose_name_plural = "Preguntas"
-        ordering = ['estacion', 'id']
+        verbose_name = "Question"
+        verbose_name_plural = "Questions"
+        ordering = ['station', 'id']
 
     def __str__(self):
-        return self.texto[:50]
+        return self.text[:50]
 
 
-class Evaluacion(models.Model):
+class Evaluation(models.Model):
     """
-    Modelo para almacenar información de las evaluaciones.
+    Modelo para almacenar información de las evaluations.
     """
-    fecha = models.DateField(verbose_name="Fecha de la evaluación")
-    duracion = models.DurationField(null=True, blank=True, verbose_name="Duración")
-    tipo = models.CharField(max_length=50, null=True, blank=True, verbose_name="Tipo de evaluación")
-    estudiantes = models.ManyToManyField(Estudiante, through='Puntaje', related_name='evaluaciones')
-    estaciones = models.ManyToManyField(Estacion, through='EvaluacionEstacion', related_name='evaluaciones')
+    date = models.DateField(verbose_name="Date de la evaluation")
+    duration = models.DurationField(null=True, blank=True, verbose_name="Duration")
+    type = models.CharField(max_length=50, null=True, blank=True, verbose_name="Type de evaluation")
+    students = models.ManyToManyField(Student, through='Score', related_name='evaluations')
+    stations = models.ManyToManyField(Station, through='EvaluationStation', related_name='evaluations')
 
     class Meta:
-        verbose_name = "Evaluación"
-        verbose_name_plural = "Evaluaciones"
-        ordering = ['fecha']
+        verbose_name = "Evaluation"
+        verbose_name_plural = "Evaluations"
+        ordering = ['date']
 
     def __str__(self):
-        return f'Evaluación {self.tipo} - {self.fecha}'
+        return f'Evaluation {self.type} - {self.date}'
 
 
-class EvaluacionEstacion(models.Model):
+class EvaluationStation(models.Model):
     """
-    Modelo intermedio para representar la relación entre Evaluación y Estación.
+    Modelo intermedio para representar la relación entre Evaluation y Station.
     """
-    evaluacion = models.ForeignKey(Evaluacion, on_delete=models.CASCADE, verbose_name="Evaluación")
-    estacion = models.ForeignKey(Estacion, on_delete=models.CASCADE, verbose_name="Estación")
+    evaluation = models.ForeignKey(Evaluation, on_delete=models.CASCADE, verbose_name="Evaluation")
+    station = models.ForeignKey(Station, on_delete=models.CASCADE, verbose_name="Station")
 
     class Meta:
-        verbose_name = "Evaluación-Estación"
-        verbose_name_plural = "Evaluaciones-Estaciones"
-        unique_together = ('evaluacion', 'estacion')
+        verbose_name = "Evaluation-Station"
+        verbose_name_plural = "Evaluations-Stations"
+        unique_together = ('evaluation', 'station')
 
     def __str__(self):
-        return f'{self.evaluacion} - {self.estacion}'
+        return f'{self.evaluation} - {self.station}'
 
 
-class Puntaje(models.Model):
+class Score(models.Model):
     """
-    Modelo para almacenar los puntajes de los estudiantes en cada estación de una evaluación.
+    Modelo para almacenar los scores de los students en cada estación de una evaluation.
     """
-    estudiante = models.ForeignKey(Estudiante, on_delete=models.CASCADE, verbose_name="Estudiante")
-    evaluacion = models.ForeignKey(Evaluacion, on_delete=models.CASCADE, verbose_name="Evaluación")
-    estacion = models.ForeignKey(Estacion, on_delete=models.CASCADE, verbose_name="Estación")
-    puntaje = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Puntaje")
-    comentario = models.TextField(null=True, blank=True, verbose_name="Comentario")
+    student = models.ForeignKey(Student, on_delete=models.CASCADE, verbose_name="Student")
+    evaluation = models.ForeignKey(Evaluation, on_delete=models.CASCADE, verbose_name="Evaluation")
+    station = models.ForeignKey(Station, on_delete=models.CASCADE, verbose_name="Station")
+    score = models.DecimalField(max_digits=5, decimal_places=2, verbose_name="Score")
+    comment = models.TextField(null=True, blank=True, verbose_name="Comment")
     feedback = models.TextField(null=True, blank=True, verbose_name="Feedback")
 
     class Meta:
-        verbose_name = "Puntaje"
-        verbose_name_plural = "Puntajes"
-        unique_together = ('estudiante', 'evaluacion', 'estacion')
-        ordering = ['estudiante', 'evaluacion', 'estacion']
+        verbose_name = "Score"
+        verbose_name_plural = "Scores"
+        unique_together = ('student', 'evaluation', 'station')
+        ordering = ['student', 'evaluation', 'station']
 
     def __str__(self):
-        return f'{self.estudiante} - {self.evaluacion} - {self.estacion}: {self.puntaje}'
+        return f'{self.student} - {self.evaluation} - {self.station}: {self.score}'

@@ -1,59 +1,59 @@
 from rest_framework import serializers
-from .models import Estudiante, Evaluador, Estacion, Pregunta, Evaluacion, EvaluacionEstacion, Puntaje
+from .models import Student, Evaluator, Station, Question, Evaluation, EvaluationStation, Score
 
-class EvaluadorSerializer(serializers.ModelSerializer):
+class EvaluatorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Evaluador
-        fields = ['id', 'nombre', 'apellido', 'especialidad', 'email']
+        model = Evaluator
+        fields = ['id', 'name', 'last_name', 'specialty', 'email']
 
-class PreguntaSerializer(serializers.ModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Pregunta
-        fields = ['id', 'texto']
+        model = Question
+        fields = ['id', 'text']
 
-class EstacionSerializer(serializers.ModelSerializer):
-    evaluador = EvaluadorSerializer(read_only=True)
-    preguntas = PreguntaSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Estacion
-        fields = ['id', 'nombre', 'descripcion', 'evaluador', 'preguntas']
-
-class EvaluacionEstacionSerializer(serializers.ModelSerializer):
-    estacion = EstacionSerializer(read_only=True)
+class StationSerializer(serializers.ModelSerializer):
+    evaluator = EvaluatorSerializer(read_only=True)
+    questions = QuestionSerializer(many=True, read_only=True)
 
     class Meta:
-        model = EvaluacionEstacion
-        fields = ['id', 'evaluacion', 'estacion']
+        model = Station
+        fields = ['id', 'name', 'description', 'evaluator', 'questions']
 
-class EvaluacionSerializer(serializers.ModelSerializer):
-    estaciones = EvaluacionEstacionSerializer(source='evaluacionestacion_set', many=True, read_only=True)
-    estudiantes = serializers.StringRelatedField(many=True, read_only=True)
-
-    class Meta:
-        model = Evaluacion
-        fields = ['id', 'fecha', 'duracion', 'tipo', 'estaciones', 'estudiantes']
-
-class PuntajeDetailSerializer(serializers.ModelSerializer):
-    evaluacion = EvaluacionSerializer(read_only=True)
-    estacion = EstacionSerializer(read_only=True)
+class EvaluationStationSerializer(serializers.ModelSerializer):
+    station = StationSerializer(read_only=True)
 
     class Meta:
-        model = Puntaje
-        fields = ['id', 'evaluacion', 'estacion', 'puntaje', 'comentario', 'feedback']
+        model = EvaluationStation
+        fields = ['id', 'evaluation', 'station']
 
-class EstudianteSerializer(serializers.ModelSerializer):
-    puntajes = PuntajeDetailSerializer(source='puntaje_set', many=True, read_only=True)
-
-    class Meta:
-        model = Estudiante
-        fields = ['id', 'nombre', 'apellido', 'matricula', 'email', 'puntajes']
-
-class PuntajeSerializer(serializers.ModelSerializer):
-    estudiante = EstudianteSerializer(read_only=True)
-    evaluacion = EvaluacionSerializer(read_only=True)
-    estacion = EstacionSerializer(read_only=True)
+class EvaluationSerializer(serializers.ModelSerializer):
+    stations = EvaluationStationSerializer(source='evaluationstation_set', many=True, read_only=True)
+    students = serializers.StringRelatedField(many=True, read_only=True)
 
     class Meta:
-        model = Puntaje
-        fields = ['id', 'estudiante', 'evaluacion', 'estacion', 'puntaje', 'comentario', 'feedback']
+        model = Evaluation
+        fields = ['id', 'date', 'duration', 'type', 'stations', 'students']
+
+class ScoreDetailSerializer(serializers.ModelSerializer):
+    evaluation = EvaluationSerializer(read_only=True)
+    station = StationSerializer(read_only=True)
+
+    class Meta:
+        model = Score
+        fields = ['id', 'evaluation', 'station', 'score', 'comment', 'feedback']
+
+class StudentSerializer(serializers.ModelSerializer):
+    scores = ScoreDetailSerializer(source='score_set', many=True, read_only=True)
+
+    class Meta:
+        model = Student
+        fields = ['id', 'name', 'last_name', 'registration_number', 'email', 'scores']
+
+class ScoreSerializer(serializers.ModelSerializer):
+    student = StudentSerializer(read_only=True)
+    evaluation = EvaluationSerializer(read_only=True)
+    station = StationSerializer(read_only=True)
+
+    class Meta:
+        model = Score
+        fields = ['id', 'student', 'evaluation', 'station', 'score', 'comment', 'feedback']

@@ -3,24 +3,24 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
-    EstudianteViewSet,
-    EvaluadorViewSet,
-    EstacionViewSet,
-    PreguntaViewSet,
-    EvaluacionViewSet,
-    EvaluacionEstacionViewSet,
-    PuntajeViewSet,
+    StudentViewSet,
+    EvaluatorViewSet,
+    StationViewSet,
+    QuestionViewSet,
+    EvaluationViewSet,
+    EvaluationStationViewSet,
+    ScoreViewSet,
     cargar_datos_prueba  # Importa la nueva vista
 )
 
 router = DefaultRouter()
-router.register(r'estudiantes', EstudianteViewSet)
-router.register(r'evaluadores', EvaluadorViewSet)
-router.register(r'estaciones', EstacionViewSet)
-router.register(r'preguntas', PreguntaViewSet)
-router.register(r'evaluaciones', EvaluacionViewSet)
-router.register(r'evaluacion-estaciones', EvaluacionEstacionViewSet)
-router.register(r'puntajes', PuntajeViewSet)
+router.register(r'students', StudentViewSet)
+router.register(r'evaluators', EvaluatorViewSet)
+router.register(r'stations', StationViewSet)
+router.register(r'questions', QuestionViewSet)
+router.register(r'evaluations', EvaluationViewSet)
+router.register(r'evaluation-stations', EvaluationStationViewSet)
+router.register(r'scores', ScoreViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
