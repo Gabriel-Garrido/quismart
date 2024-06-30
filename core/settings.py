@@ -40,13 +40,12 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
+    'apps.ecoe'
 ]
 
 THIRD_PARTY_APPS = [
     'corsheaders',
     'rest_framework',
-    'ckeditor',
-    'ckedit_uploader'
 ]
 
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS

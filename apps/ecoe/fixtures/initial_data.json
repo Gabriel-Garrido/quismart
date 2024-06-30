@@ -1,0 +1,304 @@
+[
+    {
+        "model": "ecoe.estudiante",
+        "pk": 1,
+        "fields": {
+            "nombre": "Juan",
+            "apellido": "Perez",
+            "matricula": "2021001",
+            "email": "juan.perez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.estudiante",
+        "pk": 2,
+        "fields": {
+            "nombre": "Ana",
+            "apellido": "Gomez",
+            "matricula": "2021002",
+            "email": "ana.gomez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.estudiante",
+        "pk": 3,
+        "fields": {
+            "nombre": "Luis",
+            "apellido": "Martinez",
+            "matricula": "2021003",
+            "email": "luis.martinez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.estudiante",
+        "pk": 4,
+        "fields": {
+            "nombre": "Maria",
+            "apellido": "Lopez",
+            "matricula": "2021004",
+            "email": "maria.lopez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.estudiante",
+        "pk": 5,
+        "fields": {
+            "nombre": "Carlos",
+            "apellido": "Garcia",
+            "matricula": "2021005",
+            "email": "carlos.garcia@example.com"
+        }
+    },
+    {
+        "model": "ecoe.evaluador",
+        "pk": 1,
+        "fields": {
+            "nombre": "Carlos",
+            "apellido": "Lopez",
+            "especialidad": "Medicina Interna",
+            "email": "carlos.lopez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.evaluador",
+        "pk": 2,
+        "fields": {
+            "nombre": "Maria",
+            "apellido": "Fernandez",
+            "especialidad": "Pediatría",
+            "email": "maria.fernandez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.evaluador",
+        "pk": 3,
+        "fields": {
+            "nombre": "Jose",
+            "apellido": "Ramirez",
+            "especialidad": "Cardiología",
+            "email": "jose.ramirez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.evaluador",
+        "pk": 4,
+        "fields": {
+            "nombre": "Laura",
+            "apellido": "Martinez",
+            "especialidad": "Dermatología",
+            "email": "laura.martinez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.evaluador",
+        "pk": 5,
+        "fields": {
+            "nombre": "Luis",
+            "apellido": "Sanchez",
+            "especialidad": "Ginecología",
+            "email": "luis.sanchez@example.com"
+        }
+    },
+    {
+        "model": "ecoe.estacion",
+        "pk": 1,
+        "fields": {
+            "nombre": "Estación 1",
+            "descripcion": "Historia Clínica",
+            "evaluador": 1
+        }
+    },
+    {
+        "model": "ecoe.estacion",
+        "pk": 2,
+        "fields": {
+            "nombre": "Estación 2",
+            "descripcion": "Plan de Manejo",
+            "evaluador": 2
+        }
+    },
+    {
+        "model": "ecoe.estacion",
+        "pk": 3,
+        "fields": {
+            "nombre": "Estación 3",
+            "descripcion": "Examen Físico",
+            "evaluador": 3
+        }
+    },
+    {
+        "model": "ecoe.estacion",
+        "pk": 4,
+        "fields": {
+            "nombre": "Estación 4",
+            "descripcion": "Diagnóstico Diferencial",
+            "evaluador": 4
+        }
+    },
+    {
+        "model": "ecoe.estacion",
+        "pk": 5,
+        "fields": {
+            "nombre": "Estación 5",
+            "descripcion": "Procedimientos",
+            "evaluador": 5
+        }
+    },
+    {
+        "model": "ecoe.evaluacion",
+        "pk": 1,
+        "fields": {
+            "fecha": "2024-06-30",
+            "duracion": "02:00:00",
+            "tipo": "Final"
+        }
+    },
+    {
+        "model": "ecoe.evaluacionestacion",
+        "pk": 1,
+        "fields": {
+            "evaluacion": 1,
+            "estacion": 1
+        }
+    },
+    {
+        "model": "ecoe.evaluacionestacion",
+        "pk": 2,
+        "fields": {
+            "evaluacion": 1,
+            "estacion": 2
+        }
+    },
+    {
+        "model": "ecoe.evaluacionestacion",
+        "pk": 3,
+        "fields": {
+            "evaluacion": 1,
+            "estacion": 3
+        }
+    },
+    {
+        "model": "ecoe.evaluacionestacion",
+        "pk": 4,
+        "fields": {
+            "evaluacion": 1,
+            "estacion": 4
+        }
+    },
+    {
+        "model": "ecoe.evaluacionestacion",
+        "pk": 5,
+        "fields": {
+            "evaluacion": 1,
+            "estacion": 5
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 1,
+        "fields": {
+            "estudiante": 1,
+            "evaluacion": 1,
+            "estacion": 1,
+            "puntaje": "85.00",
+            "comentario": "Buen desempeño en la historia clínica",
+            "feedback": "Debe mejorar la precisión en los detalles"
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 2,
+        "fields": {
+            "estudiante": 1,
+            "evaluacion": 1,
+            "estacion": 2,
+            "puntaje": "90.00",
+            "comentario": "Diagnóstico preciso y buen plan de manejo",
+            "feedback": "Excelente manejo del caso"
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 3,
+        "fields": {
+            "estudiante": 2,
+            "evaluacion": 1,
+            "estacion": 1,
+            "puntaje": "75.00",
+            "comentario": "Necesita mejorar en la toma de historia clínica",
+            "feedback": "Falta de detalles en la anamnesis"
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 4,
+        "fields": {
+            "estudiante": 2,
+            "evaluacion": 1,
+            "estacion": 2,
+            "puntaje": "80.00",
+            "comentario": "Diagnóstico adecuado pero plan de manejo incompleto",
+            "feedback": "Buen juicio clínico, pero faltó manejo completo"
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 5,
+        "fields": {
+            "estudiante": 3,
+            "evaluacion": 1,
+            "estacion": 1,
+            "puntaje": "95.00",
+            "comentario": "Excelente historia clínica",
+            "feedback": "Muy detallado y preciso"
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 6,
+        "fields": {
+            "estudiante": 3,
+            "evaluacion": 1,
+            "estacion": 2,
+            "puntaje": "85.00",
+            "comentario": "Buen diagnóstico y plan de manejo",
+            "feedback": "Buen manejo del tiempo y recursos"
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 7,
+        "fields": {
+            "estudiante": 4,
+            "evaluacion": 1,
+            "estacion": 3,
+            "puntaje": "88.00",
+            "comentario": "Realizó el examen físico correctamente",
+            "feedback": "Debe mejorar en la comunicación con el paciente"
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 8,
+        "fields": {
+            "estudiante": 4,
+            "evaluacion": 1,
+            "estacion": 4,
+            "puntaje": "92.00",
+            "comentario": "Identificó correctamente los diagnósticos diferenciales",
+            "feedback": "Buen análisis clínico"
+        }
+    },
+    {
+        "model": "ecoe.puntaje",
+        "pk": 9,
+        "fields": {
+            "estudiante": 5,
+            "evaluacion": 1,
+            "estacion": 3,
+            "puntaje": "78.00",
+            "comentario":"Necesita mejorar en la toma de historia clínica",
+            "feedback":"Buen manejo del tiempo y recursos"
+        }
+    }    
+]
