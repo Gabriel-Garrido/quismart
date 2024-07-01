@@ -7,6 +7,7 @@ import Questions from 'containers/pages/Questions';
 import Stations from 'containers/pages/Stations';
 import Students from 'containers/pages/Students';
 import store from 'store';
+import StudentDetail from 'containers/pages/StudentDetail';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/questions" element={<Questions />} />
           <Route path="/stations" element={<Stations />} />
           <Route path="/students" element={<Students />} />
+          <Route path="/students/:studentId" element={<StudentDetail />} />
         </Routes>
       </Router>
     </Provider>
