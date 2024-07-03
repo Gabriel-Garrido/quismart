@@ -26,7 +26,7 @@ export default function ecoe(state=initialState, action) {
         case GET_STUDENT_DETAIL_SUCCESS:
             return {
                 ...state,
-                student: payload,
+                studentDetail: payload,
                 error: null,
             };
             case GET_STUDENT_DETAIL_FAIL:
