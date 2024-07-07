@@ -13,7 +13,7 @@ function StudentDetail({ get_studentDetail, studentDetail }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     get_studentDetail(studentId);
-  }, [studentId, get_studentDetail]);
+  }, [studentId, get_studentDetail, studentDetail]);
 
   if (!studentDetail) {
     return <div>Loading...</div>;

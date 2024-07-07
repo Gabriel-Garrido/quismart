@@ -4,8 +4,8 @@
         "pk": 1,
         "fields": {
             "name": "Juan",
-            "last_name": "Perez",
-            "registration_number": "2021001",
+            "last_name": "Pérez",
+            "registration_number": "REG123",
             "email": "juan.perez@example.com"
         }
     },
@@ -13,372 +13,481 @@
         "model": "ecoe.student",
         "pk": 2,
         "fields": {
-            "name": "Ana",
-            "last_name": "Gomez",
-            "registration_number": "2021002",
-            "email": "ana.gomez@example.com"
+            "name": "María",
+            "last_name": "Gómez",
+            "registration_number": "REG456",
+            "email": "maria.gomez@example.com"
         }
     },
     {
         "model": "ecoe.student",
         "pk": 3,
         "fields": {
-            "name": "Luis",
-            "last_name": "Martinez",
-            "registration_number": "2021003",
-            "email": "luis.martinez@example.com"
-        }
-    },
-    {
-        "model": "ecoe.student",
-        "pk": 4,
-        "fields": {
-            "name": "Maria",
-            "last_name": "Lopez",
-            "registration_number": "2021004",
-            "email": "maria.lopez@example.com"
-        }
-    },
-    {
-        "model": "ecoe.student",
-        "pk": 5,
-        "fields": {
             "name": "Carlos",
-            "last_name": "Garcia",
-            "registration_number": "2021005",
-            "email": "carlos.garcia@example.com"
-        }
-    },
-    {
-        "model": "ecoe.evaluator",
-        "pk": 1,
-        "fields": {
-            "name": "Carlos",
-            "last_name": "Lopez",
-            "specialty": "Medicina Interna",
+            "last_name": "López",
+            "registration_number": "REG789",
             "email": "carlos.lopez@example.com"
         }
     },
     {
-        "model": "ecoe.evaluator",
-        "pk": 2,
-        "fields": {
-            "name": "Maria",
-            "last_name": "Fernandez",
-            "specialty": "Pediatría",
-            "email": "maria.fernandez@example.com"
-        }
-    },
-    {
-        "model": "ecoe.evaluator",
-        "pk": 3,
-        "fields": {
-            "name": "Jose",
-            "last_name": "Ramirez",
-            "specialty": "Cardiología",
-            "email": "jose.ramirez@example.com"
-        }
-    },
-    {
-        "model": "ecoe.evaluator",
-        "pk": 4,
-        "fields": {
-            "name": "Laura",
-            "last_name": "Martinez",
-            "specialty": "Dermatología",
-            "email": "laura.martinez@example.com"
-        }
-    },
-    {
-        "model": "ecoe.question",
+        "model": "ecoe.station",
         "pk": 1,
         "fields": {
-            "text": "Describa los pasos para realizar una historia clínica completa.",
-            "station": 1
+            "name": "Estación 1",
+            "description": "Evaluación de habilidades clínicas básicas"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.station",
         "pk": 2,
         "fields": {
-            "text": "Explique el proceso para elaborar un plan de manejo adecuado para un paciente con diabetes.",
-            "station": 2
+            "name": "Estación 2",
+            "description": "Evaluación de la comunicación con el paciente"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.station",
         "pk": 3,
         "fields": {
-            "text": "Realice un examen físico general y describa los hallazgos normales y anormales.",
-            "station": 3
+            "name": "Estación 3",
+            "description": "Evaluación de diagnóstico"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.station",
         "pk": 4,
         "fields": {
-            "text": "Identifique los diagnósticos diferenciales para un paciente con dolor torácico.",
-            "station": 4
+            "name": "Estación 4",
+            "description": "Evaluación de procedimientos"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.evaluationgroup",
+        "pk": 1,
+        "fields": {
+            "date": "2024-07-01",
+            "duration": "02:00:00",
+            "type": "ECOE Final 2024",
+            "students": [1, 2, 3],
+            "stations": [1, 2, 3, 4]
+        }
+    },
+    {
+        "model": "ecoe.evaluationgroup",
+        "pk": 2,
+        "fields": {
+            "date": "2024-07-02",
+            "duration": "02:00:00",
+            "type": "ECOE Intermedio 2024",
+            "students": [1, 2, 3],
+            "stations": [1, 2, 3, 4]
+        }
+    },
+    {
+        "model": "ecoe.evaluationgroup",
+        "pk": 3,
+        "fields": {
+            "date": "2024-07-03",
+            "duration": "02:00:00",
+            "type": "ECOE Inicial 2024",
+            "students": [1, 2, 3],
+            "stations": [1, 2, 3, 4]
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 1,
+        "fields": {
+            "evaluation_group": 1,
+            "station": 1,
+            "student": 1,
+            "station_score": 85,
+            "station_comment": "Buen desempeño en habilidades básicas"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 2,
+        "fields": {
+            "evaluation_group": 1,
+            "station": 2,
+            "student": 1,
+            "station_score": 90,
+            "station_comment": "Excelente comunicación"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 3,
+        "fields": {
+            "evaluation_group": 1,
+            "station": 3,
+            "student": 1,
+            "station_score": 78,
+            "station_comment": "Diagnóstico adecuado"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 4,
+        "fields": {
+            "evaluation_group": 1,
+            "station": 4,
+            "student": 1,
+            "station_score": 82,
+            "station_comment": "Buenos procedimientos"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
         "pk": 5,
         "fields": {
-            "text": "Describa los pasos para realizar una técnica de asepsia adecuada antes de un procedimiento.",
-            "station": 5
+            "evaluation_group": 1,
+            "station": 1,
+            "student": 2,
+            "station_score": 88,
+            "station_comment": "Muy buen desempeño"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.evaluationstation",
         "pk": 6,
         "fields": {
-            "text": "Explique cómo se debe realizar una evaluation de signos vitales.",
-            "station": 3
+            "evaluation_group": 1,
+            "station": 2,
+            "student": 2,
+            "station_score": 85,
+            "station_comment": "Comunicación clara"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.evaluationstation",
         "pk": 7,
         "fields": {
-            "text": "Describa cómo debe ser la comunicación efectiva con un paciente pediátrico y sus padres.",
-            "station": 2
+            "evaluation_group": 1,
+            "station": 3,
+            "student": 2,
+            "station_score": 80,
+            "station_comment": "Diagnóstico acertado"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.evaluationstation",
         "pk": 8,
         "fields": {
-            "text": "Identifique los principales signos y síntomas de una infección urinaria.",
-            "station": 4
+            "evaluation_group": 1,
+            "station": 4,
+            "student": 2,
+            "station_score": 83,
+            "station_comment": "Procedimientos bien realizados"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.evaluationstation",
         "pk": 9,
         "fields": {
-            "text": "Explique el manejo inicial de un paciente con sospecha de fractura ósea.",
-            "station": 5
+            "evaluation_group": 1,
+            "station": 1,
+            "student": 3,
+            "station_score": 87,
+            "station_comment": "Habilidades básicas correctas"
         }
     },
     {
-        "model": "ecoe.question",
+        "model": "ecoe.evaluationstation",
         "pk": 10,
         "fields": {
-            "text": "Describa los criterios diagnósticos para hipertensión arterial.",
-            "station": 1
-        }
-    },
-    {
-        "model": "ecoe.evaluator",
-        "pk": 5,
-        "fields": {
-            "name": "Luis",
-            "last_name": "Sanchez",
-            "specialty": "Ginecología",
-            "email": "luis.sanchez@example.com"
-        }
-    },
-    {
-        "model": "ecoe.station",
-        "pk": 1,
-        "fields": {
-            "name": "Station 1",
-            "description": "Historia Clínica",
-            "evaluator": 1
-        }
-    },
-    {
-        "model": "ecoe.station",
-        "pk": 2,
-        "fields": {
-            "name": "Station 2",
-            "description": "Plan de Manejo",
-            "evaluator": 2
-        }
-    },
-    {
-        "model": "ecoe.station",
-        "pk": 3,
-        "fields": {
-            "name": "Station 3",
-            "description": "Examen Físico",
-            "evaluator": 3
-        }
-    },
-    {
-        "model": "ecoe.station",
-        "pk": 4,
-        "fields": {
-            "name": "Station 4",
-            "description": "Diagnóstico Diferencial",
-            "evaluator": 4
-        }
-    },
-    {
-        "model": "ecoe.station",
-        "pk": 5,
-        "fields": {
-            "name": "Station 5",
-            "description": "Procedimientos",
-            "evaluator": 5
-        }
-    },
-    {
-        "model": "ecoe.evaluation",
-        "pk": 1,
-        "fields": {
-            "date": "2024-06-30",
-            "duration": "02:00:00",
-            "type": "Final"
-        }
-    },
-    {
-        "model": "ecoe.evaluationstation",
-        "pk": 1,
-        "fields": {
-            "evaluation": 1,
-            "station": 1
-        }
-    },
-    {
-        "model": "ecoe.evaluationstation",
-        "pk": 2,
-        "fields": {
-            "evaluation": 1,
-            "station": 2
-        }
-    },
-    {
-        "model": "ecoe.evaluationstation",
-        "pk": 3,
-        "fields": {
-            "evaluation": 1,
-            "station": 3
-        }
-    },
-    {
-        "model": "ecoe.evaluationstation",
-        "pk": 4,
-        "fields": {
-            "evaluation": 1,
-            "station": 4
-        }
-    },
-    {
-        "model": "ecoe.evaluationstation",
-        "pk": 5,
-        "fields": {
-            "evaluation": 1,
-            "station": 5
-        }
-    },
-    {
-        "model": "ecoe.score",
-        "pk": 1,
-        "fields": {
-            "student": 1,
-            "evaluation": 1,
-            "station": 1,
-            "score": "85.00",
-            "comment": "Buen desempeño en la historia clínica",
-            "feedback": "Debe mejorar la precisión en los detalles"
-        }
-    },
-    {
-        "model": "ecoe.score",
-        "pk": 2,
-        "fields": {
-            "student": 1,
-            "evaluation": 1,
+            "evaluation_group": 1,
             "station": 2,
-            "score": "90.00",
-            "comment": "Diagnóstico preciso y buen plan de manejo",
-            "feedback": "Excelente manejo del caso"
-        }
-    },
-    {
-        "model": "ecoe.score",
-        "pk": 3,
-        "fields": {
-            "student": 2,
-            "evaluation": 1,
-            "station": 1,
-            "score": "75.00",
-            "comment": "Necesita mejorar en la toma de historia clínica",
-            "feedback": "Falta de detalles en la anamnesis"
-        }
-    },
-    {
-        "model": "ecoe.score",
-        "pk": 4,
-        "fields": {
-            "student": 2,
-            "evaluation": 1,
-            "station": 2,
-            "score": "80.00",
-            "comment": "Diagnóstico adecuado pero plan de manejo incompleto",
-            "feedback": "Buen juicio clínico, pero faltó manejo completo"
-        }
-    },
-    {
-        "model": "ecoe.score",
-        "pk": 5,
-        "fields": {
             "student": 3,
-            "evaluation": 1,
-            "station": 1,
-            "score": "95.00",
-            "comment": "Excelente historia clínica",
-            "feedback": "Muy detallado y preciso"
+            "station_score": 89,
+            "station_comment": "Comunicación efectiva"
         }
     },
     {
-        "model": "ecoe.score",
-        "pk": 6,
+        "model": "ecoe.evaluationstation",
+        "pk": 11,
         "fields": {
-            "student": 3,
-            "evaluation": 1,
-            "station": 2,
-            "score": "85.00",
-            "comment": "Buen diagnóstico y plan de manejo",
-            "feedback": "Buen manejo del tiempo y recursos"
-        }
-    },
-    {
-        "model": "ecoe.score",
-        "pk": 7,
-        "fields": {
-            "student": 4,
-            "evaluation": 1,
+            "evaluation_group": 1,
             "station": 3,
-            "score": "88.00",
-            "comment": "Realizó el examen físico correctamente",
-            "feedback": "Debe mejorar en la comunicación con el paciente"
+            "student": 3,
+            "station_score": 81,
+            "station_comment": "Diagnóstico preciso"
         }
     },
     {
-        "model": "ecoe.score",
-        "pk": 8,
+        "model": "ecoe.evaluationstation",
+        "pk": 12,
         "fields": {
-            "student": 4,
-            "evaluation": 1,
+            "evaluation_group": 1,
             "station": 4,
-            "score": "92.00",
-            "comment": "Identificó correctamente los diagnósticos diferenciales",
-            "feedback": "Buen análisis clínico"
+            "student": 3,
+            "station_score": 84,
+            "station_comment": "Procedimientos adecuados"
         }
     },
     {
-        "model": "ecoe.score",
-        "pk": 9,
+        "model": "ecoe.evaluationstation",
+        "pk": 13,
         "fields": {
-            "student": 5,
-            "evaluation": 1,
-            "station": 3,
-            "score": "78.00",
-            "comment":"Necesita mejorar en la toma de historia clínica",
-            "feedback":"Buen manejo del tiempo y recursos"
+            "evaluation_group": 2,
+            "station": 1,
+            "student": 1,
+            "station_score": 86,
+            "station_comment": "Buen desempeño en habilidades básicas"
         }
-    }    
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 14,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 2,
+            "student": 1,
+            "station_score": 91,
+            "station_comment": "Excelente comunicación"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 15,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 3,
+            "student": 1,
+            "station_score": 79,
+            "station_comment": "Diagnóstico adecuado"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 16,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 4,
+            "student": 1,
+            "station_score": 83,
+            "station_comment": "Buenos procedimientos"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 17,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 1,
+            "student": 2,
+            "station_score": 89,
+            "station_comment": "Muy buen desempeño"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 18,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 2,
+            "student": 2,
+            "station_score": 86,
+            "station_comment": "Comunicación clara"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 19,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 3,
+            "student": 2,
+            "station_score": 81,
+            "station_comment": "Diagnóstico acertado"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 20,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 4,
+            "student": 2,
+            "station_score": 84,
+            "station_comment": "Procedimientos bien realizados"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 21,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 1,
+            "student": 3,
+            "station_score": 88,
+            "station_comment": "Habilidades básicas correctas"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 22,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 2,
+            "student": 3,
+            "station_score": 90,
+            "station_comment": "Comunicación efectiva"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 23,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 3,
+            "student": 3,
+            "station_score": 82,
+            "station_comment": "Diagnóstico preciso"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 24,
+        "fields": {
+            "evaluation_group": 2,
+            "station": 4,
+            "student": 3,
+            "station_score": 85,
+            "station_comment": "Procedimientos adecuados"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 25,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 1,
+            "student": 1,
+            "station_score": 87,
+            "station_comment": "Buen desempeño en habilidades básicas"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 26,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 2,
+            "student": 1,
+            "station_score": 92,
+            "station_comment": "Excelente comunicación"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 27,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 3,
+            "student": 1,
+            "station_score": 80,
+            "station_comment": "Diagnóstico adecuado"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 28,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 4,
+            "student": 1,
+            "station_score": 84,
+            "station_comment": "Buenos procedimientos"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 29,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 1,
+            "student": 2,
+            "station_score": 90,
+            "station_comment": "Muy buen desempeño"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 30,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 2,
+            "student": 2,
+            "station_score": 87,
+            "station_comment": "Comunicación clara"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 31,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 3,
+            "student": 2,
+            "station_score": 82,
+            "station_comment": "Diagnóstico acertado"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 32,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 4,
+            "student": 2,
+            "station_score": 85,
+            "station_comment": "Procedimientos bien realizados"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 33,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 1,
+            "student": 3,
+            "station_score": 89,
+            "station_comment": "Habilidades básicas correctas"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 34,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 2,
+            "student": 3,
+            "station_score": 91,
+            "station_comment": "Comunicación efectiva"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 35,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 3,
+            "student": 3,
+            "station_score": 83,
+            "station_comment": "Diagnóstico preciso"
+        }
+    },
+    {
+        "model": "ecoe.evaluationstation",
+        "pk": 36,
+        "fields": {
+            "evaluation_group": 3,
+            "station": 4,
+            "student": 3,
+            "station_score": 86,
+            "station_comment": "Procedimientos adecuados"
+        }
+    }
 ]

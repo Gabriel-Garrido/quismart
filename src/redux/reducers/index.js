@@ -3,4 +3,4 @@ import ecoe from './ecoe';
 
 export default combineReducers({
     ecoe
-})
+});

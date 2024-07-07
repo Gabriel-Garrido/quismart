@@ -1,41 +1,92 @@
-import {
-    GET_STUDENTS_SUCCESS,
-    GET_STUDENTS_FAIL,
-    GET_STUDENT_DETAIL_SUCCESS,
-    GET_STUDENT_DETAIL_FAIL
-} from '../actions/ecoe/types'
-
-const initialState = {
-    students: null
-}
-
-export default function ecoe(state=initialState, action) {
-    const { type, payload } = action
-
-    switch(type){
-        case GET_STUDENTS_SUCCESS:
-            return {
-                ...state,
-                students: payload
-            }
-        case GET_STUDENTS_FAIL:
-            return {
-                ...state,
-                students: null
-            }
-        case GET_STUDENT_DETAIL_SUCCESS:
-            return {
-                ...state,
-                studentDetail: payload,
-                error: null,
-            };
-            case GET_STUDENT_DETAIL_FAIL:
-            return {
-                ...state,
-                student: null,
-                error: 'Failed to fetch student details',
-            };
-        default:
-            return state
+import { 
+    GET_STUDENTS_SUCCESS, GET_STUDENTS_FAIL, 
+    GET_STUDENT_DETAIL_SUCCESS, GET_STUDENT_DETAIL_FAIL,
+    GET_STUDENT_EVALUATIONS_SUCCESS, GET_STUDENT_EVALUATIONS_FAIL,
+    GET_GROUP_EVALUATIONS_SUCCESS, GET_GROUP_EVALUATIONS_FAIL,
+    GET_STUDENT_GROUP_EVALUATIONS_SUCCESS, GET_STUDENT_GROUP_EVALUATIONS_FAIL 
+  } from "../actions/ecoe/types";
+  
+  const initialState = {
+    students: [],
+    student: null,
+    studentEvaluations: [],
+    groupEvaluations: [],
+    studentGroupEvaluations: [],
+    loading: true,
+    error: null,
+  };
+  
+  export default function(state = initialState, action) {
+    const { type, payload } = action;
+  
+    switch (type) {
+      case GET_STUDENTS_SUCCESS:
+        return {
+          ...state,
+          students: payload,
+          loading: false,
+        };
+      case GET_STUDENTS_FAIL:
+        return {
+          ...state,
+          students: [],
+          loading: false,
+          error: payload,
+        };
+      case GET_STUDENT_DETAIL_SUCCESS:
+        return {
+          ...state,
+          student: payload,
+          loading: false,
+        };
+      case GET_STUDENT_DETAIL_FAIL:
+        return {
+          ...state,
+          student: null,
+          loading: false,
+          error: payload,
+        };
+      case GET_STUDENT_EVALUATIONS_SUCCESS:
+        return {
+          ...state,
+          studentEvaluations: payload,
+          loading: false,
+        };
+      case GET_STUDENT_EVALUATIONS_FAIL:
+        return {
+          ...state,
+          studentEvaluations: [],
+          loading: false,
+          error: payload,
+        };
+      case GET_GROUP_EVALUATIONS_SUCCESS:
+        return {
+          ...state,
+          groupEvaluations: payload,
+          loading: false,
+        };
+      case GET_GROUP_EVALUATIONS_FAIL:
+        return {
+          ...state,
+          groupEvaluations: [],
+          loading: false,
+          error: payload,
+        };
+      case GET_STUDENT_GROUP_EVALUATIONS_SUCCESS:
+        return {
+          ...state,
+          studentGroupEvaluations: payload,
+          loading: false,
+        };
+      case GET_STUDENT_GROUP_EVALUATIONS_FAIL:
+        return {
+          ...state,
+          studentGroupEvaluations: [],
+          loading: false,
+          error: payload,
+        };
+      default:
+        return state;
     }
-}
+  }
+  
