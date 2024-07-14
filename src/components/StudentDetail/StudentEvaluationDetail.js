@@ -1,14 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { DotLoader } from 'react-spinners';
 
 
 function StudentEvaluationDetail({ studentGroup }) {
   const { studentId } = useParams();
   const [thisStudentGroupEvaluations, setThisStudentGroupEvaluations] = useState([]);
-  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 

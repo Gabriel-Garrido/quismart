@@ -7,8 +7,10 @@ import Layout from "hocs/layouts/Layout";
 import { Link, useParams } from "react-router-dom";
 import StudentEvaluationDetail from "components/StudentDetail/StudentEvaluationDetail";
 import { ArrowLeftIcon } from '@heroicons/react/outline';
+import Students from "./Students";
+import StudentCard from "components/students/StudentCard";
 
-function StudentDetail({ get_studentDetail, studentDetail, get_studentGroups, studentGroups }) {
+function StudentDetail({ get_studentDetail, students, studentDetail, get_studentGroups, studentGroups }) {
   const { studentId } = useParams();
 
   useEffect(() => {
@@ -26,7 +28,19 @@ function StudentDetail({ get_studentDetail, studentDetail, get_studentGroups, st
   return (
     <Layout>
       <Navbar />
-      <div className="bg-dark-bg text-light-text min-h-screen flex justify-center">
+      <div className=" bg-dark-bg text-light-text min-h-screen flex justify-center ">
+        <div>
+          <ul className="space-y-4 pt-24 w-80 hidden lg:block">
+                  {students && students.map((student, index) => (
+                    <li key={index} className="block w-full">
+                      <StudentCard student={student} />
+                    </li>
+                  ))}
+                </ul>
+        </div>
+        <div>
+
+      <div>
         <div className="bg-dark-secondary p-8 rounded-lg shadow-lg w-full mx-3 mt-24 mb-4">
         
           <div className="items-center flex justify-start w-full p-5 bg-dark-secondary border border-b-0 border-gray-200 rounded-t-xl focus:ring-gray-200">
@@ -60,6 +74,9 @@ function StudentDetail({ get_studentDetail, studentDetail, get_studentGroups, st
           </ul>
         </div>
       </div>
+
+        </div>
+      </div>
       <Footer />
     </Layout>
   );
@@ -68,6 +85,8 @@ function StudentDetail({ get_studentDetail, studentDetail, get_studentGroups, st
 const mapStateToProps = (state) => ({
   studentDetail: state.ecoe.studentDetail,
   studentGroups: state.ecoe.studentGroups,
+  students: state.ecoe.students,
+
 });
 
 export default connect(mapStateToProps, {
