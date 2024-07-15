@@ -10,7 +10,11 @@ import {
   GET_STUDENT_GROUPS_SUCCESS,
   GET_STUDENT_GROUPS_FAIL,
   GET_STUDENT_GROUP_EVALUATIONS_SUCCESS,
-  GET_STUDENT_GROUP_EVALUATIONS_FAIL
+  GET_STUDENT_GROUP_EVALUATIONS_FAIL,
+  GET_STATIONS_SUCCESS,
+  GET_STATIONS_FAIL,
+  CREATE_STATION_SUCCESS,
+  CREATE_STATION_FAIL,
 } from "../actions/ecoe/types";
 
 const initialState = {
@@ -20,6 +24,7 @@ const initialState = {
   groupEvaluations: [],
   studentGroups: [],
   studentGroupEvaluations: [],
+  stations: [],
   loading: true,
   error: null,
 };
@@ -28,6 +33,31 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
+    case GET_STATIONS_SUCCESS:
+      return {
+        ...state,
+        stations: payload,
+        loading: false,
+      };
+    case GET_STATIONS_FAIL:
+      return {
+        ...state,
+        stations: [],
+        loading: false,
+        error: payload,
+      };
+    case CREATE_STATION_SUCCESS:
+      return {
+        ...state,
+        stations: [...state.stations, payload],
+        loading: false,
+      };
+    case CREATE_STATION_FAIL:
+      return {
+        ...state,
+        error: payload,
+        loading: false,
+      };
     case GET_STUDENTS_SUCCESS:
       return {
         ...state,

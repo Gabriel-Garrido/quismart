@@ -17,6 +17,7 @@
     "react-simple-typewriter": "^5.0.1",
     "react-slick": "^0.30.2",
     "react-spinners": "^0.14.1",
+    "recharts": "^2.12.7",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",

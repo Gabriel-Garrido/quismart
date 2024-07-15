@@ -5,7 +5,7 @@ import Footer from "components/navigation/Footer";
 import Navbar from "components/navigation/Navbar";
 import Layout from "hocs/layouts/Layout";
 import { Link, useParams } from "react-router-dom";
-import StudentEvaluationDetail from "components/StudentDetail/StudentEvaluationDetail";
+import StudentEvaluationDetail from "components/students/StudentEvaluationDetail";
 import { ArrowLeftIcon } from '@heroicons/react/outline';
 import Students from "./Students";
 import StudentCard from "components/students/StudentCard";

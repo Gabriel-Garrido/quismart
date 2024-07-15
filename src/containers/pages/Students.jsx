@@ -30,7 +30,7 @@ function Students({ get_students, students }) {
               ))}
             </ul>
             <button className="mt-8 bg-primary-blue text-dark-bg py-2 px-4 rounded hover:bg-highlight transition duration-300">
-              Click 
+              Agregar estudiante 
             </button>
           </div>
         </div>
